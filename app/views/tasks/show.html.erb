@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Task Details</title>
+    <style>
+      /* General Page Styling */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      /* Full-width header styling */
+      .header {
+        width: 100%;
+        background-color: #007bff;
+        color: white;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+      }
+
+      .header h1 {
+        margin: 0;
+        font-size: 24px;
+      }
+
+      .header-nav {
+        display: flex;
+        align-items: center;
+      }
+
+      .header-nav a {
+        color: white;
+        text-decoration: none;
+        margin-left: 20px;
+        font-size: 18px;
+      }
+
+      .header-nav a:hover {
+        text-decoration: underline;
+      }
+
+      /* Container Styling */
+      .table-container {
+        width: 90%;
+        max-width: 900px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        margin-top: 30px;
+      }
+
+      /* Table Heading */
+      h3 {
+        text-align: center;
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      /* Table Styling */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th, td {
+        padding: 22px 35px;
+        text-align: left;
+      }
+
+      th {
+        background-color: blue;
+        color: white;
+        text-transform: uppercase;
+        font-size: 14px;
+      }
+
+      td {
+        border-bottom: 1px solid #ddd;
+        font-size: 16px;
+        color: blue;
+      }
+
+      /* Action Links Styling */
+      td a {
+        text-decoration: none;
+        color: #007bff;
+        padding: 5px 10px;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+        font-size: 14px;
+      }
+
+      td a:hover {
+        background-color: #007bff;
+        color: white;
+      }
+
+      .edit-link {
+        color: #28a745;
+      }
+
+      .delete-link {
+        color: #dc3545;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="header">
+      <h1>Task Manager</h1>
+      <div class="header-nav">
+        <%= render partial: "partial/header" %>
+      </div>
+    </header>
+
+    <!-- Table Container Section -->
+    <div class="table-container">
+      <h3>Show All The Task Details</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Task Title</th>
+            <th>Task Description</th>
+            <th>Task Status</th>
+            <th>Task User_Id</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @task.title %></td>
+            <td><%= @task.description %></td>
+            <td><%= @task.status %></td>
+            <td><%= @task.user_id %></td>
+            <td>
+              <%= link_to "Edit", edit_task_path(@task), class: 'edit-link' %> |
+              <%= button_to "Delete", task_path(@task), method: :delete ,class: 'delete-link' %>
+              <%= link_to 'Home Page', '/tasks', method: :get, class: "delete-link" %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
